@@ -100,11 +100,11 @@ DB[:conn].execute(sql).collect do |row|
 end.first
 end 
 
-def self.all_students_in_grade_X
+def self.all_students_in_grade_X(size)
 sql = <<-SQL
 SELECT * FROM students WHERE students.grade = ?;
 SQL
-DB[:conn].execute(sql).collect do |row|
+DB[:conn].execute(sql,size).collect do |row|
       self.new_from_db(row)
     end
     end 
